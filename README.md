@@ -13,8 +13,9 @@ Some existing codebases do exist that used to do this. I tried at least 2 or 3. 
 Multiple problems really. 
 
 The biggest issue. Emoji's. I think these might be the new date time parsing issue for parsing text. There does not seem to be a simple or universal solution to move Emoji's around and more importantly have them render correctly within a PDF document. 
-The solution I have used in this codebase uses the Symbola font. It is only OK. Doesn't cover all of even the "basic" emoji's that get used in WhatsApp all the time.
-The repository I tried (linked below) had a good looking LaTeX solution but i couldn;t get it to work. There are a couple of Python modules for dealing with Emoji's 'Emoji' being one of them, and this has some great features which I used. Namley, detecting an emoji, so you could then do something. I suspect the correct way to do this is to somehow grab an image of the emoji being used and insert this into the PDF at the correct point. I am not sure how seamless ReportLab might handle this.
+The solution I have used in this codebase uses the Symbola font. It is only OK. Doesn't cover all of the even "basic" emoji's that get used in WhatsApp all the time.
+The repository I tried (linked below) had a good looking LaTeX solution but I couldn't get it to work. There are a couple of Python modules for dealing with Emoji's 'Emoji' being one of them, and this has some great features which I have used. Namley, detecting an emoji, so you could then do something. I suspect the correct way to do this is to somehow grab an image of the emoji being used and insert this into the PDF at the correct point. I am not sure how seamless ReportLab might handle this.
+[https://unicode.org/emoji/charts/full-emoji-list.html] would be the place to grab them from but the site takes a VERY long time to fully load. Data would need to be cached.
 
 LaTeX is a great idea but for me who is just starting out trying to use it and gain experience. It feels like very specific things are needed in order for it to work. I have LaTeX on a Unix system and 2 LaTeX GUI's on my Windows machine. None of them would simply "work" with the generated LaTeX I could find on other code bases.
 It reminds me of trying to debug CSS.
@@ -28,8 +29,8 @@ The : is specificly annoying because the Emoji module uses this to wrap the text
 This is a bit of a messy codebase. Thought it would be simpler / faster than it turned out to be.
 
 Inspiration has been taken from [https://github.com/theveloped/WhatsBook] 
-but this is an old respository. It looks like WhatsApp changed the formatting subtly when the export function is used. 
-This can be quickly corrected so that the code generates the TEX file but then getting the TEX files to render is a massive main. I'm very new to LaTeX and just couldn't get the emoji stuff to work.
+but this is an old repository. It looks like WhatsApp changed the formatting subtly when the export function is used. 
+This can be quickly corrected so that the code generates the TEX file but then getting the TEX files to render is a massive pain. I'm very new to LaTeX and just couldn't get the emoji stuff to work. If I stripped emojis from the chat and the LaTeX template then TexStudio would render the output that WhatsBook generated. 
 
 # Improvements
 
@@ -39,9 +40,9 @@ This can be quickly corrected so that the code generates the TEX file but then g
 3. Make the code work via command line. Like Whatsbook
     * At present you need to potentially modify the WhatsAppExport2PDF.py before execution. Not clean
 4. Give options for pictures and video
-    * Currently pictures and video are ignored but the text is output do you can see that something was posted.
-    * dont underesitmate how many addtional pages including images will create.
-    * Perhaps something similar to the Monthly wordcloud. Have a set of images for a given time frame tiled onto a single page
+    * Currently pictures and video are ignored, but the text is output do you can see that something was posted.
+    * Don't underestimate how many additional pages including images will create.
+    * Perhaps something similar to the Monthly word cloud. Have a set of images for a given time frame tiled onto a single page
     * Video could be handled by grabbing a single frame from the video and using that as an image
 5. Allow for date ranges to be set.
     * This would make it easy to split out and create a PDF for a fixed timeframe instead of the whole chat
@@ -57,10 +58,10 @@ This can be quickly corrected so that the code generates the TEX file but then g
 pip install -r requirements.txt
 ```
 * Export a WhatsApp chat and get the exported zip file onto your computer with this code
-* Create a "data" directory as a sub directory to the WhatsappExportRender.py file.
+* Create a "data" directory as a subdirectory to the WhatsappExportRender.py file.
 * Extract your WhatsApp export into the data directory
 ```plaintext
-chatExport.zip
+data
     |--  _chat.txt
     |--  2017-04-13-PHOTO-00000001.jpg
     |--  2017-04-13-PHOTO-00000002.jpg
@@ -68,7 +69,7 @@ chatExport.zip
     |--  2017-04-13-AUDIO-00000004.opus
     |--  2017-04-13-VIDEO-00000005.mp4
 ```
-should look similar to the above.
+it should look similar to the above.
 * Execute the WhatsappExportRender.py file
     * This will create a WhatsappExportRender.pdf file in the same folder location.
 
