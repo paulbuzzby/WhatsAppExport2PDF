@@ -7,7 +7,7 @@ from reportlab.lib.colors import HexColor
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from reportlab.lib import utils
-from reportlab.lib.units import cm
+from reportlab.lib.units import cm, mm
 from reportlab.platypus.flowables import Flowable
 
 import PIL as pil
@@ -155,7 +155,7 @@ def wrap_emojis(text):
 
 
 def create_pdf(chat_data, output_filename):
-    doc = SimpleDocTemplate(output_filename, pagesize=A4, leftMargin=10, rightMargin=10, topMargin=10, bottomMargin=10)
+    doc = SimpleDocTemplate(output_filename, pagesize=A4, leftMargin=14*mm, rightMargin=14*mm, topMargin=8*mm, bottomMargin=8*mm)
     styles = getSampleStyleSheet()
     #background colour #16a58d
         
@@ -196,7 +196,7 @@ def create_pdf(chat_data, output_filename):
             if currentMonth is not None : 
                 story.append(PageBreak())
             monthImgPath = CreateMonthImage(date.strftime("%B"), date.year)            
-            story.append(get_image(monthImgPath, width=15*cm))
+            story.append(get_image(monthImgPath, width=18*cm))
             story.append(PageBreak())
             currentMonth = date.month
 
@@ -234,5 +234,8 @@ def create_pdf(chat_data, output_filename):
 # Example usage
 if __name__ == '__main__':
     #CreateMonthImage("November", 2023)
+    print("Starting to process WhatsApp chat data")
     chat_data = parse_chat("data/_chat.txt")
+    print("Parcing done, creating PDF")
     create_pdf(chat_data, "WhatsappExportRender.pdf")
+    print("PDF created successfully")
