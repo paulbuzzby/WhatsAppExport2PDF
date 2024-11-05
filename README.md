@@ -10,12 +10,12 @@ Some existing codebases do exist that used to do this. I tried at least 2 or 3. 
 
 # The Big Problem
 
-Multiple problems really. 
+## Multiple problems really
 
 The biggest issue. Emoji's. I think these might be the new date time parsing issue for parsing text. There does not seem to be a simple or universal solution to move Emoji's around and more importantly have them render correctly within a PDF document. 
 The solution I have used in this codebase uses the Symbola font. It is only OK. Doesn't cover all of the even "basic" emoji's that get used in WhatsApp all the time.
 The repository I tried (linked below) had a good looking LaTeX solution but I couldn't get it to work. There are a couple of Python modules for dealing with Emoji's 'Emoji' being one of them, and this has some great features which I have used. Namley, detecting an emoji, so you could then do something. I suspect the correct way to do this is to somehow grab an image of the emoji being used and insert this into the PDF at the correct point. I am not sure how seamless ReportLab might handle this.
-[https://unicode.org/emoji/charts/full-emoji-list.html] would be the place to grab them from but the site takes a VERY long time to fully load. Data would need to be cached.
+https://unicode.org/emoji/charts/full-emoji-list.html would be the place to grab them from but the site takes a VERY long time to fully load. Data would need to be cached.
 
 LaTeX is a great idea but for me who is just starting out trying to use it and gain experience. It feels like very specific things are needed in order for it to work. I have LaTeX on a Unix system and 2 LaTeX GUI's on my Windows machine. None of them would simply "work" with the generated LaTeX I could find on other code bases.
 It reminds me of trying to debug CSS.
@@ -28,7 +28,7 @@ The : is specificly annoying because the Emoji module uses this to wrap the text
 
 This is a bit of a messy codebase. Thought it would be simpler / faster than it turned out to be.
 
-Inspiration has been taken from [https://github.com/theveloped/WhatsBook] 
+Inspiration has been taken from https://github.com/theveloped/WhatsBook 
 but this is an old repository. It looks like WhatsApp changed the formatting subtly when the export function is used. 
 This can be quickly corrected so that the code generates the TEX file but then getting the TEX files to render is a massive pain. I'm very new to LaTeX and just couldn't get the emoji stuff to work. If I stripped emojis from the chat and the LaTeX template then TexStudio would render the output that WhatsBook generated. 
 
